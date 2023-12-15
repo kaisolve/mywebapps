@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp-deployment
+  labels:
+    app: mywebapp
+spec:
+  selector:
+    matchLabels:
+      app: mywebapp
+  replicas: 3
+  template:
+    metadata:
+      name: pods
+      labels:
+        app: mywebapp
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: mywebapp-container
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 80

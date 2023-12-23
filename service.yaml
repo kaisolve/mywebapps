@@ -1,3 +1,4 @@
+# service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,8 +7,7 @@ spec:
   selector:
     app: mywebapp
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 80
-      nodePort: 30005
+      nodePort: 30000  # Choose an available node port number (30000-32767)
   type: NodePort

@@ -1,23 +1,20 @@
+# deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mywebapp-deployment
-  labels:
-    app: mywebapp
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: mywebapp
-  replicas: 3
   template:
     metadata:
-      name: pods
       labels:
         app: mywebapp
     spec:
       containers:
-      - image: nginx:alpine
-        name: mywebapp-container
-        imagePullPolicy: IfNotPresent
+      - name: mywebapp-container
+        image: kai73/mywebapp:latest
         ports:
-          - containerPort: 80
+        - containerPort: 80
